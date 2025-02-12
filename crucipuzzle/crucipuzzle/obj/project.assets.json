@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sergi\\OneDrive\\Desktop\\progettiC#\\crucipuzzle\\crucipuzzle\\crucipuzzle\\crucipuzzle.csproj",
+      "projectUniqueName": "C:\\Users\\sergi\\OneDrive\\Desktop\\progettiC#\\crucipuzzle\\crucipuzzleSoluzione\\crucipuzzle\\crucipuzzle\\crucipuzzle.csproj",
       "projectName": "crucipuzzle",
-      "projectPath": "C:\\Users\\sergi\\OneDrive\\Desktop\\progettiC#\\crucipuzzle\\crucipuzzle\\crucipuzzle\\crucipuzzle.csproj",
+      "projectPath": "C:\\Users\\sergi\\OneDrive\\Desktop\\progettiC#\\crucipuzzle\\crucipuzzleSoluzione\\crucipuzzle\\crucipuzzle\\crucipuzzle.csproj",
       "packagesPath": "C:\\Users\\sergi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sergi\\OneDrive\\Desktop\\progettiC#\\crucipuzzle\\crucipuzzle\\crucipuzzle\\obj\\",
+      "outputPath": "C:\\Users\\sergi\\OneDrive\\Desktop\\progettiC#\\crucipuzzle\\crucipuzzleSoluzione\\crucipuzzle\\crucipuzzle\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
