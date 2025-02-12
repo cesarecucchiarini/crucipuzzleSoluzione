@@ -12,3 +12,4 @@ C:\Users\sergi\OneDrive\Desktop\progettiC#\crucipuzzle\crucipuzzleSoluzione\cruc
 C:\Users\sergi\OneDrive\Desktop\progettiC#\crucipuzzle\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.pdb
 C:\Users\sergi\OneDrive\Desktop\progettiC#\crucipuzzle\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.genruntimeconfig.cache
 C:\Users\sergi\OneDrive\Desktop\progettiC#\crucipuzzle\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\ref\crucipuzzle.dll
+C:\Users\sergi\OneDrive\Desktop\progettiC#\crucipuzzle\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.sourcelink.json

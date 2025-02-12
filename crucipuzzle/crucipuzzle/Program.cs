@@ -1,14 +1,15 @@
 ﻿//VOID
 using System;
 using System.IO;
-void RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string consonanti)
+string[] RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string consonanti)
 {
     string percorso = @"../../../../paroleItaliane.txt";
-    int r, c;
+    int r, c, Nparole=rnd.Next(4,11);
     bool scrivi;
     string[] linea = File.ReadAllLines(percorso);
+    string[] usate=new string[Nparole];
     //AGIUNGO LE PAROLE
-    for (int k = 0; k < rnd.Next(4, 11); k++)
+    for (int k = 0; k < usate.Length; k++)
     {
         scrivi = true;
         string parola = linea[rnd.Next(0, linea.Length)];
@@ -19,6 +20,7 @@ void RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string consona
             k--;
             continue;
         }
+        usate[k] = parola;
         switch (rnd.Next(0, 6))
         {
             //ORIZZ
@@ -157,10 +159,10 @@ void RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string consona
                 }
                 break;
         }
-
     }
     //CONTROLLO GLI SPAZI BIANCHI
     riempiPuzzle(vocali, consonanti, puzzle, rnd);
+    return usate;
 }
 void riempiPuzzle(string vocali, string consonanti, char[,] puzzle, Random rnd)
 {
@@ -204,7 +206,7 @@ void scriviPuzzle(char[,] puzzle, char[,] colori)
         Console.WriteLine();
     }
 }
-bool inserimento(char[,] puzzle, string parola, ref string usate, char[,] colori)
+bool inserimento(char[,] puzzle, string parola, ref string usate,string[] paroleDaIndovinare, char[,] colori)
 {
     int giuste = 0, errore = 0;
     //CONTROLLO PAROLA
@@ -214,6 +216,17 @@ bool inserimento(char[,] puzzle, string parola, ref string usate, char[,] colori
         return false;
     }
     usate += parola;
+    for(int i = 0; i < paroleDaIndovinare.Length; i++)
+    {
+        if (parola == paroleDaIndovinare[i])
+        {
+            break;
+        }
+        else if (i == paroleDaIndovinare.Length-1)
+        {
+            return false;
+        }
+    }
     //CONTROLLO PAROLA ORIZ
     for (int i = 0; i < puzzle.GetLength(0); i++)
     {
@@ -602,13 +615,13 @@ string decisione = "";
 int punteggio = 0, lun = 10;
 char[,] puzzle = new char[lun, lun];
 char[,] colori = new char[lun, lun];
-RiempiVocabolario(puzzle, rnd, vocali, consonanti);
+string[] paroleDaIndovinare=RiempiVocabolario(puzzle, rnd, vocali, consonanti);
 while (true)
 {
     scriviPuzzle(puzzle, colori);
     Console.WriteLine("Dammi una parola");
     string parola = Console.ReadLine();
-    if (inserimento(puzzle, parola.ToLower(), ref usate, colori))
+    if (inserimento(puzzle, parola.ToLower(), ref usate,paroleDaIndovinare, colori))
     {
         Console.WriteLine("Parola trovata!");
         punteggio += parola.Length;
