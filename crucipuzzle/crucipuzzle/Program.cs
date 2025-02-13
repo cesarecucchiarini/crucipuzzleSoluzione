@@ -4,160 +4,260 @@ using System.IO;
 string[] RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string consonanti)
 {
     string percorso = @"../../../../paroleItaliane.txt";
-    int r, c, Nparole=rnd.Next(4,11);
-    bool scrivi;
+    int r, c, Nparole=rnd.Next(4,11), verso;
+    bool scrivi=true;
     string[] linea = File.ReadAllLines(percorso);
     string[] usate=new string[Nparole];
+    string parola;
     //AGIUNGO LE PAROLE
     for (int k = 0; k < usate.Length; k++)
     {
-        scrivi = true;
-        string parola = linea[rnd.Next(0, linea.Length)];
+        parola = linea[rnd.Next(0, linea.Length)];
         r = rnd.Next(0, puzzle.GetLength(0));
         c = rnd.Next(0, puzzle.GetLength(0));
-        if (parola.Length < 3)
+        verso = rnd.Next(0, 8);
+        if (parola.Length < 4||parola.Length>puzzle.GetLength(0))
         {
-            k--;
-            continue;
+            scrivi = false;
         }
-        usate[k] = parola;
-        switch (rnd.Next(0, 6))
+        foreach (string x in usate)
         {
-            //ORIZZ
-            case 0:
-                if (parola.Length <= puzzle.GetLength(0) - c - 1)
-                {
-                    for (int i = c; i < parola.Length + c; i++)
+            if (x == null)
+            {
+                break;
+            }
+            if (x == parola||parola.Contains(x)||x.Contains(parola))
+            {
+                scrivi = false;
+            }
+        }
+        if (scrivi)
+        {
+            switch (verso)
+            {
+                //ORIZZ
+                case 0:
+                    if (parola.Length <= puzzle.GetLength(0) - c - 1)
                     {
-                        if (puzzle[r, i] != '\0' && puzzle[r, c] != parola[i - c])
+                        for (int i = c; i < parola.Length + c; i++)
                         {
-                            k--;
-                            scrivi = false;
-                            break;
+                            if (puzzle[r, i] != '\0' && puzzle[r, c] != parola[i - c])
+                            {
+                                scrivi = false;
+                                break;
+                            }
+                        }
+                        if (scrivi)
+                        {
+                            for (int i = 0; i < parola.Length; i++)
+                            {
+                                puzzle[r, c] = parola[i];
+                                c++;
+                            }
                         }
                     }
-                    if (scrivi)
+                    else
+                    {
+                        scrivi = false;
+                    }
+                    break;
+                //ORIZZ INV
+                case 4:
+                    if (parola.Length <= c)
                     {
                         for (int i = 0; i < parola.Length; i++)
                         {
-                            puzzle[r, c] = parola[i];
-                            c++;
+                            if (puzzle[r, c - i] != '\0' && puzzle[r, c - i] != parola[i])
+                            {
+                                scrivi = false;
+                                break;
+                            }
                         }
-                    }
-                }
-                break;
-            //ORIZZ INV
-            case 4:
-                if (parola.Length <= c)
-                {
-                    for (int i = 0; i < parola.Length; i++)
-                    {
-                        if (puzzle[r, c - i] != '\0' && puzzle[r, c - i] != parola[i])
+                        if (scrivi)
                         {
-                            k--;
-                            scrivi = false;
-                            break;
+                            for (int i = 0; i < parola.Length; i++)
+                            {
+                                puzzle[r, c] = parola[i];
+                                c--;
+                            }
                         }
                     }
-                    if (scrivi)
+                    else
+                    {
+                        scrivi = false;
+                    }
+                    break;
+                //VERT
+                case 1:
+                    if (parola.Length <= puzzle.GetLength(0) - r - 1)
+                    {
+                        for (int i = r; i < parola.Length + r; i++)
+                        {
+                            if (puzzle[i, c] != '\0' && parola[i - r] != puzzle[i, c])
+                            {
+                                scrivi = false;
+                                break;
+                            }
+                        }
+                        if (scrivi)
+                        {
+                            for (int i = 0; i < parola.Length; i++)
+                            {
+                                puzzle[r, c] = parola[i];
+                                r++;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        scrivi = false;
+                    }
+                    break;
+                //VERT INV
+                case 5:
+                    if (parola.Length <= r)
                     {
                         for (int i = 0; i < parola.Length; i++)
                         {
-                            puzzle[r, c] = parola[i];
-                            c--;
+                            if (puzzle[r - i, c] != '\0' && puzzle[r - i, c] != parola[i])
+                            {
+                                scrivi = false;
+                                break;
+                            }
                         }
-                    }
-                }
-                break;
-            //VERT
-            case 1:
-                if (parola.Length <= puzzle.GetLength(0) - r - 1)
-                {
-                    for (int i = r; i < parola.Length + r; i++)
-                    {
-                        if (puzzle[i, c] != '\0' && parola[i - r] != puzzle[i, c])
+                        if (scrivi)
                         {
-                            k--;
-                            scrivi = false;
-                            break;
+                            for (int i = 0; i < parola.Length; i++)
+                            {
+                                puzzle[r, c] = parola[i];
+                                r--;
+                            }
                         }
                     }
-                    if (scrivi)
+                    else
+                    {
+                        scrivi = false;
+                    }
+                    break;
+                //OBL1
+                case 2:
+                    if (parola.Length <= puzzle.GetLength(0) - r - 1)
+                    {
+                        for (int i = r; i < parola.Length + r; i++)
+                        {
+                            if (puzzle[i, i] != '\0' && puzzle[i, i] != parola[i - r])
+                            {
+                                scrivi = false;
+                                break;
+                            }
+                        }
+                        if (scrivi)
+                        {
+                            for (int i = 0; i < parola.Length; i++)
+                            {
+                                puzzle[r, r] = parola[i];
+                                r++;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        scrivi = false;
+                    }
+                    break;
+                //OBL INV
+                case 6:
+                    if (parola.Length <= r + 1)
                     {
                         for (int i = 0; i < parola.Length; i++)
                         {
-                            puzzle[r, c] = parola[i];
-                            r++;
+                            if (puzzle[r - i, r - i] != '\0' && puzzle[r - i, r - i] != parola[i])
+                            {
+                                scrivi = false;
+                                break;
+                            }
                         }
-                    }
-                }
-                break;
-            //VERT INV
-            case 5:
-                if (parola.Length <= r)
-                {
-                    for (int i = 0; i < parola.Length; i++)
-                    {
-                        if (puzzle[r - i, c] != '\0' && puzzle[r - i, c] != parola[i])
+                        if (scrivi)
                         {
-                            k--;
-                            scrivi = false;
-                            break;
+                            for (int i = 0; i < parola.Length; i++)
+                            {
+                                puzzle[r, r] = parola[i];
+                                r--;
+                            }
                         }
                     }
-                    if (scrivi)
+                    else
+                    {
+                        scrivi = false;
+                    }
+                    break;
+                //OBL2
+                case 3:
+                    if (parola.Length <= puzzle.GetLength(0) - r)
                     {
                         for (int i = 0; i < parola.Length; i++)
                         {
-                            puzzle[r, c] = parola[i];
-                            r--;
+                            if (puzzle[r+i,puzzle.GetLength(0)-r-i-1] != '\0' && puzzle[r + i, puzzle.GetLength(0) - r - i - 1] != parola[i])
+                            {
+                                scrivi = false;
+                                break;
+                            }
                         }
-                    }
-                }
-                break;
-            //OBL1
-            case 2:
-                if (parola.Length <= puzzle.GetLength(0) - r - 1)
-                {
-                    for (int i = r; i < parola.Length + r; i++)
-                    {
-                        if (puzzle[i, i] != '\0' && puzzle[i, i] != parola[i - r])
+                        if (scrivi)
                         {
-                            k--;
-                            scrivi = false;
-                            break;
+                            for (int i = 0; i < parola.Length; i++)
+                            {
+                                puzzle[r, puzzle.GetLength(0) - r - 1] = parola[i];
+                                r++;
+                            }
                         }
                     }
-                    if (scrivi)
+                    else
+                    {
+                        scrivi = false;
+                    }
+                    break;
+                //OBL2 INV
+                case 7:
+                    if(parola.Length <= r + 1)
                     {
                         for (int i = 0; i < parola.Length; i++)
                         {
-                            puzzle[r, r] = parola[i];
-                            r++;
+                            if (puzzle[r - i, puzzle.GetLength(0) - 1 - r + i] != '\0' && puzzle[r - i, puzzle.GetLength(0) - 1 - r + i] != parola[i])
+                            {
+                                scrivi = false;
+                                break;
+                            }
                         }
-                    }
-                }
-                break;
-            //OBL2
-            case 3:
-                if (parola.Length <= puzzle.GetLength(0) - r - 1)
-                {
-                    for (int i = 0; i < parola.Length; i++)
-                    {
-                        if (puzzle[puzzle.GetLength(0) - i - r - 1, i] != '\0' && puzzle[puzzle.GetLength(0) - i - r - 1, i] != parola[i])
+                        if (scrivi)
                         {
-                            k--;
-                            scrivi = false;
-                            break;
+                            for(int i=0; i < parola.Length; i++)
+                            {
+                                puzzle[r,puzzle.GetLength(0)-r-1]=parola[i];
+                                r--;
+                            }
                         }
                     }
-                    for (int i = 0; i < parola.Length; i++)
+                    else
                     {
-                        puzzle[puzzle.GetLength(0) - r - 1, r] = parola[i];
-                        r++;
+                        scrivi = false;
                     }
-                }
-                break;
+                    break;
+            }
+        }
+        if (scrivi)
+        {
+            usate[k] = parola;
+            scriviPuzzle(puzzle, new char[puzzle.GetLength(0), puzzle.GetLength(1)]);
+            foreach (string p in usate)
+            {
+                Console.WriteLine(p);
+            }
+        }
+        if (!scrivi)
+        {
+            scrivi = true;
+            k--;
         }
     }
     //CONTROLLO GLI SPAZI BIANCHI
@@ -200,6 +300,10 @@ void scriviPuzzle(char[,] puzzle, char[,] colori)
                 Console.ForegroundColor = ConsoleColor.Red;
             }
             Console.Write(puzzle[i, j]);
+            if (puzzle[i, j] == '\0')
+            {
+                Console.Write(" ");
+            }
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("]");
         }
