@@ -12,9 +12,9 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("crucipuzzle")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74476c24176c7a7f4b4dde8ad7ce8308cd4cde31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("crucipuzzle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("crucipuzzle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

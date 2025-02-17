@@ -15,7 +15,7 @@ string[] RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string con
         parola = linea[rnd.Next(0, linea.Length)];
         r = rnd.Next(0, puzzle.GetLength(0));
         c = rnd.Next(0, puzzle.GetLength(0));
-        verso = rnd.Next(6, 7);
+        verso = rnd.Next(0, 8);
         if (parola.Length < 4||parola.Length>puzzle.GetLength(0))
         {
             scrivi = false;
@@ -251,11 +251,12 @@ string[] RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string con
         if (scrivi)
         {
             usate[k] = parola;
-            scriviPuzzle(puzzle, new char[puzzle.GetLength(0), puzzle.GetLength(1)]);
+            //PER CONTROLLARE RIMUOVERE DAL COMMENTO
+            /*scriviPuzzle(puzzle, new char[puzzle.GetLength(0), puzzle.GetLength(1)]);
             foreach (string p in usate)
             {
                 Console.WriteLine(p);
-            }
+            }*/
         }
         if (!scrivi)
         {
@@ -466,7 +467,7 @@ bool inserimento(char[,] puzzle, string parola, ref string usate,string[] parole
             colonna++;
         }
     }
-    //OBLP INV
+    //OBL1 INV
     for (int i = 1; i <(puzzle.GetLength(0)*2)-2; i++)
     {
         riga=i<puzzle.GetLength(0)? puzzle.GetLength(0)-1 :i-puzzle.GetLength(0)+1;
@@ -496,151 +497,70 @@ bool inserimento(char[,] puzzle, string parola, ref string usate,string[] parole
             riga--;
             colonna--;
         }
+        errore = giuste = 0;
     }
     //CONTROLLO PAROLA OBL2
-    //OBLP
-    for (int i = puzzle.GetLength(0) - 1; i >= 0; i--)
+    //OBL2
+    for(int i = 1; i < (puzzle.GetLength(0) * 2) - 2; i++)
     {
-        if (parola[puzzle.GetLength(0) - 1 - i - errore] == puzzle[puzzle.GetLength(0) - i - 1, i])
+        colonna=i<puzzle.GetLength(0)? i  :puzzle.GetLength(0)-1;
+        riga = i < puzzle.GetLength(0) ? 0 : i - puzzle.GetLength(0) + 1;
+        bloccoR = riga;
+        bloccoC = colonna;
+        for(int j = 0; j < Math.Max(bloccoR, bloccoC) - Math.Min(bloccoR, bloccoC) + 1; j++)
         {
-            giuste++;
-        }
-        else
-        {
-            giuste = 0;
-            errore = puzzle.GetLength(0) - i;
-        }
-        if (giuste == parola.Length)
-        {
-            return true;
-        }
-    }
-    giuste = errore = 0;
-    //OBLP INV
-    for (int i = puzzle.GetLength(0) - 1; i >= 0; i--)
-    {
-        if (parola[puzzle.GetLength(0) - 1 - i - errore] == puzzle[i, puzzle.GetLength(0) - i - 1])
-        {
-            giuste++;
-        }
-        else
-        {
-            giuste = 0;
-            errore = puzzle.GetLength(0) - i;
-        }
-        if (giuste == parola.Length)
-        {
-            return true;
-        }
-    }
-    giuste = errore = 0;
-    //OBL SU
-    for (int i = 0; i < puzzle.GetLength(0) - 1; i++)
-    {
-        int r = 0, c = i + 1;
-        if (parola.Length <= i + 2)
-        {
-            for (int j = 0; j < i + 2; j++)
+            if (parola[j - errore] == puzzle[riga, colonna])
             {
-                if (parola[j - errore] == puzzle[r, c])
-                {
-                    giuste++;
-                }
-                else
-                {
-                    errore = j + 1;
-                    giuste = 0;
-                }
-                if (giuste == parola.Length)
-                {
-                    return true;
-                }
-                r++;
-                c--;
+                giuste++;
             }
-            errore = giuste = 0;
-        }
-    }
-    //OBL SU INV
-    for (int i = 0; i < puzzle.GetLength(0) - 1; i++)
-    {
-        int r = i + 1, c = 0;
-        if (parola.Length <= i + 2)
-        {
-            for (int j = 0; j < i + 2; j++)
+            else
             {
-                if (parola[j - errore] == puzzle[r, c])
-                {
-                    giuste++;
-                }
-                else
-                {
-                    errore = j + 1;
-                    giuste = 0;
-                }
-                if (giuste == parola.Length)
-                {
-                    return true;
-                }
-                r--;
-                c++;
+                giuste = 0;
+                errore = j + 1;
             }
-            errore = giuste = 0;
-        }
-    }
-    //OBL GIU
-    for (int i = 2; i < puzzle.GetLength(0); i++)
-    {
-        int c = puzzle.GetLength(0) - 1, r = puzzle.GetLength(0) - i;
-        if (parola.Length <= i)
-        {
-            for (int j = 0; j < i; j++)
+            if (giuste == parola.Length)
             {
-                if (parola[j - errore] == puzzle[r, c])
+                for (int k = giuste - 1; k >= 0; k--)
                 {
-                    giuste++;
+                    colori[riga - k, colonna + k] = 'r';
                 }
-                else
-                {
-                    errore = j + 1;
-                    giuste = 0;
-                }
-                if (giuste == parola.Length)
-                {
-                    return true;
-                }
-                c--;
-                r++;
+                return true;
             }
-            errore = giuste = 0;
+            riga++;
+            colonna--;
         }
+        errore = giuste = 0;
     }
-    //OBL GIU INV
-    for (int i = 2; i < puzzle.GetLength(0); i++)
+    //OBL2 INV
+    for(int i = 1; i < (puzzle.GetLength(0) * 2) - 2; i++)
     {
-        int c = i - 1, r = puzzle.GetLength(0) - 1;
-        if (parola.Length <= puzzle.GetLength(0) + 1 - i)
+        riga = i < puzzle.GetLength(0) ? puzzle.GetLength(0) - 1 : (puzzle.GetLength(0) * 2) - i - 2;
+        colonna = i < puzzle.GetLength(0) ? puzzle.GetLength(0) - i - 1 : 0;
+        bloccoR = riga;
+        bloccoC = colonna;
+        for(int j = 0; j < Math.Max(bloccoR,bloccoC)-Math.Min(bloccoR, bloccoC) + 1; j++)
         {
-            for (int j = 0; j < puzzle.GetLength(0) + 1 - i; j++)
+            if (parola[j - errore] == puzzle[riga, colonna])
             {
-                if (parola[j - errore] == puzzle[r, c])
-                {
-                    giuste++;
-                }
-                else
-                {
-                    errore = j + 1;
-                    giuste = 0;
-                }
-                if (giuste == parola.Length)
-                {
-                    return true;
-                }
-                c++;
-                r--;
+                giuste++;
             }
-            errore = giuste = 0;
+            else
+            {
+                giuste = 0;
+                errore = j + 1;
+            }
+            if (giuste == parola.Length)
+            {
+                for (int k = giuste - 1; k >= 0; k--)
+                {
+                    colori[riga + k, colonna - k] = 'r';
+                }
+                return true;
+            }
+            riga--;
+            colonna++;
         }
+        errore = giuste = 0;
     }
     return false;
 }
@@ -649,7 +569,7 @@ Random rnd = new Random();
 string vocali = "aeiou", consonanti = "bcdfghlmnpqrstvz";
 string usate = "";
 string decisione = "";
-int punteggio = 0, lun = 6;
+int punteggio = 0, lun = 10;
 char[,] puzzle = new char[lun, lun];
 char[,] colori = new char[lun, lun];
 string[] paroleDaIndovinare=RiempiVocabolario(puzzle, rnd, vocali, consonanti);

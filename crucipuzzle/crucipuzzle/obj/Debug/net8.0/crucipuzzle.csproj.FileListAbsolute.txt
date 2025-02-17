@@ -13,3 +13,18 @@ C:\Users\sergi\OneDrive\Desktop\progettiC#\crucipuzzle\crucipuzzleSoluzione\cruc
 C:\Users\sergi\OneDrive\Desktop\progettiC#\crucipuzzle\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.genruntimeconfig.cache
 C:\Users\sergi\OneDrive\Desktop\progettiC#\crucipuzzle\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\ref\crucipuzzle.dll
 C:\Users\sergi\OneDrive\Desktop\progettiC#\crucipuzzle\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.sourcelink.json
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\bin\Debug\net8.0\crucipuzzle.exe
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\bin\Debug\net8.0\crucipuzzle.deps.json
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\bin\Debug\net8.0\crucipuzzle.runtimeconfig.json
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\bin\Debug\net8.0\crucipuzzle.dll
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\bin\Debug\net8.0\crucipuzzle.pdb
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.AssemblyInfoInputs.cache
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.AssemblyInfo.cs
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.csproj.CoreCompileInputs.cache
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.sourcelink.json
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.dll
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\refint\crucipuzzle.dll
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.pdb
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\crucipuzzle.genruntimeconfig.cache
+C:\Users\cucchiarini.cesare\Desktop\progetti C#\crucipuzzleSoluzione\crucipuzzle\crucipuzzle\obj\Debug\net8.0\ref\crucipuzzle.dll
