@@ -252,11 +252,11 @@ string[] RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string con
         {
             usate[k] = parola;
             //PER CONTROLLARE RIMUOVERE DAL COMMENTO
-            /*scriviPuzzle(puzzle, new char[puzzle.GetLength(0), puzzle.GetLength(1)]);
+            scriviPuzzle(puzzle, new char[puzzle.GetLength(0), puzzle.GetLength(1)]);
             foreach (string p in usate)
             {
                 Console.WriteLine(p);
-            }*/
+            }
         }
         if (!scrivi)
         {
@@ -266,7 +266,7 @@ string[] RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string con
     }
     //CONTROLLO GLI SPAZI BIANCHI
     riempiPuzzle(vocali, consonanti, puzzle, rnd);
-    return usate;
+    return linea;
 }
 void riempiPuzzle(string vocali, string consonanti, char[,] puzzle, Random rnd)
 {
@@ -318,12 +318,12 @@ bool inserimento(char[,] puzzle, string parola, ref string usate,string[] parole
 {
     int giuste = 0, errore = 0, riga=0,colonna=0, bloccoR, bloccoC;
     //CONTROLLO PAROLA
-    if (parola.Length > puzzle.GetLength(0) || parola.Length < 2 || usate.Contains(parola))
+    if (parola.Length > puzzle.GetLength(0) || parola.Length < 2 || usate.Contains(parola[0]+parola.Substring(1).ToUpper()))
     {
         Console.WriteLine("La parola è di lunghezza sbagliata o è gia stata usata");
         return false;
     }
-    usate += parola;
+    usate += parola[0]+parola.Substring(1).ToUpper();
     foreach(string x in paroleDaIndovinare)
     {
         if (parola == x)
