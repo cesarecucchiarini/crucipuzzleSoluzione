@@ -251,12 +251,6 @@ string[] RiempiVocabolario(char[,] puzzle, Random rnd, string vocali, string con
         if (scrivi)
         {
             usate[k] = parola;
-            //PER CONTROLLARE RIMUOVERE DAL COMMENTO
-            scriviPuzzle(puzzle, new char[puzzle.GetLength(0), puzzle.GetLength(1)]);
-            foreach (string p in usate)
-            {
-                Console.WriteLine(p);
-            }
         }
         if (!scrivi)
         {

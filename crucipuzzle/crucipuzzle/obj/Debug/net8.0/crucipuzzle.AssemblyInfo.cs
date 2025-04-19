@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("crucipuzzle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc4e85e1fe8c9989fee81fddf397048e2447c99d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c5d3274e944414f87c66a086ec0c29f9929fdd7")]
 [assembly: System.Reflection.AssemblyProductAttribute("crucipuzzle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("crucipuzzle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
